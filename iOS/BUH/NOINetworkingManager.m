@@ -11,8 +11,6 @@
 
 @interface NOINetworkingManager ()
 
-@property (nonatomic, strong) NSOperationQueue *networkQueue;
-
 @end
 
 @implementation NOINetworkingManager
@@ -32,39 +30,26 @@
     self = [super init];
     
     if (self) {
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) , ^{
-            _networkQueue = [[NSOperationQueue alloc] init];
-        });
+
     }
     
     return  self;
-}
-
-- (void)playTone:(NSNumber *)pitch
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager GET:[NSString stringWithFormat:@"http://10.22.12.76:5000/note/%d",[pitch integerValue]]
-      parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSLog(@"JSON: %@", responseObject);
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"Error: %@", error);
-         }];
 }
 
 - (void)playPitch:(NSNumber *)pitch filterCutoff:(NSNumber *)filterCutoff
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     NSDictionary *parameters = @{@"note"    : pitch,
                                  @"filter"  : filterCutoff,
                                  kUserParam : [[NSUserDefaults standardUserDefaults] objectForKey:kUserParam]};
     
-    [manager POST:@"http://10.22.12.76:5000/"
+    [manager POST:@"http://10.22.12.76:5000/play/"
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"JSON: %@", responseObject);
+              NSLog(@"RESPONSE: %@", [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding]);
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
           }];

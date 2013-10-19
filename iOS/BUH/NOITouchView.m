@@ -12,6 +12,9 @@
 #define MIN_FREQ 440
 #define MAX_FREQ 2000
 
+#define MIN_FILT 100
+#define MAX_FILT 0
+
 @interface NOITouchView ()
 
 @property (nonatomic, strong) CAShapeLayer *fingerSquare;
@@ -61,21 +64,22 @@
 {
     self.fingerSquare.hidden = YES;
     
-    [[NOINetworkingManager sharedInstance] playTone:@(-1)];
+    [[NOINetworkingManager sharedInstance] playPitch:@(-1) filterCutoff:@(-1)];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.fingerSquare.hidden = YES;
     
-    [[NOINetworkingManager sharedInstance] playTone:@(-1)];
+    [[NOINetworkingManager sharedInstance] playPitch:@(-1) filterCutoff:@(-1)];
 }
 
 - (void)playAtPoint:(CGPoint)point
 {
     int pitch = MIN_FREQ + (MAX_FREQ - MIN_FREQ) * point.x / CGRectGetWidth(self.frame);
+    int filter = MIN_FILT + (MAX_FILT - MIN_FILT) * point.y / CGRectGetHeight(self.frame);
     
-    [[NOINetworkingManager sharedInstance] playTone:@(pitch)];
+    [[NOINetworkingManager sharedInstance] playPitch:@(pitch) filterCutoff:@(filter)];
 }
 
 @end

@@ -42,6 +42,8 @@
 {
     [textField resignFirstResponder];
     
+    [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:kUserParam];
+    
     [self performSegueWithIdentifier:@"userSegue" sender:self];
     
     return YES;

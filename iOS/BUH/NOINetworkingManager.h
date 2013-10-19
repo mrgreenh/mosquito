@@ -12,7 +12,7 @@
 
 + (NOINetworkingManager *)sharedInstance;
 
-- (void)playTone:(NSNumber *)pitch;
+- (void)playPitch:(NSNumber *)pitch filterCutoff:(NSNumber *)filterCutoff;
 - (void)logInAsUser:(NSString *)userName;
 
 @end
