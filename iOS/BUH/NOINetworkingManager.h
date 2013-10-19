@@ -11,6 +11,8 @@
 @interface NOINetworkingManager : NSObject
 
 + (NOINetworkingManager *)sharedInstance;
+
 - (void)playTone:(NSNumber *)pitch;
+- (void)logInAsUser:(NSString *)userName;
 
 @end

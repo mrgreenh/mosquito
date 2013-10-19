@@ -8,12 +8,10 @@
 
 #import "NOIViewController.h"
 #import "NOITouchView.h"
-#import "TheAmazingAudioEngine.h"
 
 @interface NOIViewController ()
 
 @property (weak, nonatomic) IBOutlet NOITouchView *touchView;
-@property (nonatomic, strong) AEAudioUnitChannel *sampler;
 
 @end
 

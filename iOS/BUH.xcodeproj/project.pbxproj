@@ -26,6 +26,7 @@
 		7A9D080D181212C5008AAC60 /* NOINetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D080C181212C5008AAC60 /* NOINetworkingManager.m */; };
 		7A9D08111812152A008AAC60 /* NOITouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D08101812152A008AAC60 /* NOITouchView.m */; };
 		7AD52E41181227A0005E40C2 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD52E40181227A0005E40C2 /* particle.png */; };
+		7AD52E441812402C005E40C2 /* NOIUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD52E431812402C005E40C2 /* NOIUserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,9 @@
 		7A9D080F1812152A008AAC60 /* NOITouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOITouchView.h; sourceTree = "<group>"; };
 		7A9D08101812152A008AAC60 /* NOITouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOITouchView.m; sourceTree = "<group>"; };
 		7AD52E40181227A0005E40C2 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
+		7AD52E421812402C005E40C2 /* NOIUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOIUserViewController.h; sourceTree = "<group>"; };
+		7AD52E431812402C005E40C2 /* NOIUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOIUserViewController.m; sourceTree = "<group>"; };
+		7AD52E4518124328005E40C2 /* NOIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOIConstants.h; sourceTree = "<group>"; };
 		C0FE817F20454106B7BD1955 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C376C89A3A4BE2B353ECC2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -141,6 +145,9 @@
 				7A9D080F1812152A008AAC60 /* NOITouchView.h */,
 				7A9D08101812152A008AAC60 /* NOITouchView.m */,
 				7AD52E40181227A0005E40C2 /* particle.png */,
+				7AD52E421812402C005E40C2 /* NOIUserViewController.h */,
+				7AD52E431812402C005E40C2 /* NOIUserViewController.m */,
+				7AD52E4518124328005E40C2 /* NOIConstants.h */,
 			);
 			path = BUH;
 			sourceTree = "<group>";
@@ -309,6 +316,7 @@
 			files = (
 				7A63194C18120FBD000AEB43 /* NOIViewController.m in Sources */,
 				7A63193F18120FBD000AEB43 /* main.m in Sources */,
+				7AD52E441812402C005E40C2 /* NOIUserViewController.m in Sources */,
 				7A9D08111812152A008AAC60 /* NOITouchView.m in Sources */,
 				7A9D080D181212C5008AAC60 /* NOINetworkingManager.m in Sources */,
 				7A63194318120FBD000AEB43 /* NOIAppDelegate.m in Sources */,

@@ -11,7 +11,7 @@
 
 @interface NOINetworkingManager ()
 
-@property (nonatomic, strong) NSOperationQueue *pitchQueue;
+@property (nonatomic, strong) NSOperationQueue *networkQueue;
 
 @end
 
@@ -33,7 +33,7 @@
     
     if (self) {
         dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) , ^{
-            _pitchQueue = [[NSOperationQueue alloc] init];
+            _networkQueue = [[NSOperationQueue alloc] init];
         });
     }
     
@@ -44,27 +44,41 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [self.pitchQueue addOperationWithBlock:^{
-        [manager GET:[NSString stringWithFormat:@"http://10.22.12.76:5000/note/%d",[pitch integerValue]]
-          parameters:nil
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 NSLog(@"JSON: %@", responseObject);
-             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 NSLog(@"Error: %@", error);
-             }];
-    }];
+    [manager GET:[NSString stringWithFormat:@"http://10.22.12.76:5000/note/%d",[pitch integerValue]]
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"JSON: %@", responseObject);
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+         }];
 }
 
 - (void)playPitch:(NSNumber *)pitch filterCutoff:(NSNumber *)filterCutoff
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"note"    : pitch,
-                                 @"filter"  : filterCutoff};
     
-    [manager POST:@"http://example.com/resources.json"
+    NSDictionary *parameters = @{@"note"    : pitch,
+                                 @"filter"  : filterCutoff,
+                                 kUserParam : [[NSUserDefaults standardUserDefaults] objectForKey:kUserParam]};
+    
+    [manager POST:@"http://10.22.12.76:5000/"
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               NSLog(@"JSON: %@", responseObject);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+}
+
+- (void)logInAsUser:(NSString *)userName
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"user" : userName,};
+    
+    [manager POST:@"http://10.22.12.76:5000/"
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [[NSUserDefaults standardUserDefaults] setObject:userName forKey:kUserParam];
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
           }];

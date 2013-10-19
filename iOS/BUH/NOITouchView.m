@@ -14,7 +14,7 @@
 
 @interface NOITouchView ()
 
-@property (nonatomic, strong) CAShapeLayer *fingerCircle;
+@property (nonatomic, strong) CAShapeLayer *fingerSquare;
 
 @end
 
@@ -25,9 +25,9 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        _fingerCircle = [CAShapeLayer layer];
-        _fingerCircle.frame = CGRectMake(0, 0, 50, 50);
-        _fingerCircle.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7].CGColor;
+        _fingerSquare = [CAShapeLayer layer];
+        _fingerSquare.frame = CGRectMake(0, 0, 50, 50);
+        _fingerSquare.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7].CGColor;
     }
     
     return self;
@@ -35,17 +35,17 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.fingerCircle.superlayer == nil) {
-        [self.layer addSublayer:_fingerCircle];
+    if (self.fingerSquare.superlayer == nil) {
+        [self.layer addSublayer:_fingerSquare];
     }
     
-    self.fingerCircle.hidden = NO;
+    self.fingerSquare.hidden = NO;
     
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
     
     [self playAtPoint: touchPoint];
     
-    self.fingerCircle.position = touchPoint;
+    self.fingerSquare.position = touchPoint;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -54,17 +54,19 @@
     
     [self playAtPoint:touchPoint];
     
-    self.fingerCircle.position = touchPoint;
+    self.fingerSquare.position = touchPoint;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.fingerCircle.hidden = YES;
+    self.fingerSquare.hidden = YES;
+    
+    [[NOINetworkingManager sharedInstance] playTone:@(-1)];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.fingerCircle.hidden = YES;
+    self.fingerSquare.hidden = YES;
     
     [[NOINetworkingManager sharedInstance] playTone:@(-1)];
 }
