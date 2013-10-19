@@ -28,6 +28,7 @@
 		7AD52E41181227A0005E40C2 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD52E40181227A0005E40C2 /* particle.png */; };
 		7AD52E441812402C005E40C2 /* NOIUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD52E431812402C005E40C2 /* NOIUserViewController.m */; };
 		7AD52E4818125663005E40C2 /* NOIRemoteSynth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD52E4718125663005E40C2 /* NOIRemoteSynth.m */; };
+		7AD52E4B1812679F005E40C2 /* NOIEmitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD52E4A1812679F005E40C2 /* NOIEmitterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		7AD52E4518124328005E40C2 /* NOIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOIConstants.h; sourceTree = "<group>"; };
 		7AD52E4618125663005E40C2 /* NOIRemoteSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOIRemoteSynth.h; sourceTree = "<group>"; };
 		7AD52E4718125663005E40C2 /* NOIRemoteSynth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOIRemoteSynth.m; sourceTree = "<group>"; };
+		7AD52E491812679F005E40C2 /* NOIEmitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOIEmitterView.h; sourceTree = "<group>"; };
+		7AD52E4A1812679F005E40C2 /* NOIEmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOIEmitterView.m; sourceTree = "<group>"; };
 		C0FE817F20454106B7BD1955 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C376C89A3A4BE2B353ECC2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -153,6 +156,8 @@
 				7AD52E4518124328005E40C2 /* NOIConstants.h */,
 				7AD52E4618125663005E40C2 /* NOIRemoteSynth.h */,
 				7AD52E4718125663005E40C2 /* NOIRemoteSynth.m */,
+				7AD52E491812679F005E40C2 /* NOIEmitterView.h */,
+				7AD52E4A1812679F005E40C2 /* NOIEmitterView.m */,
 			);
 			path = BUH;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 				7A9D08111812152A008AAC60 /* NOITouchView.m in Sources */,
 				7AD52E4818125663005E40C2 /* NOIRemoteSynth.m in Sources */,
 				7A9D080D181212C5008AAC60 /* NOINetworkingManager.m in Sources */,
+				7AD52E4B1812679F005E40C2 /* NOIEmitterView.m in Sources */,
 				7A63194318120FBD000AEB43 /* NOIAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

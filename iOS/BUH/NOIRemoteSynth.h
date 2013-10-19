@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, NOIWaveType) {
 
 @property (nonatomic, assign) NOIWaveType waveType;
 
-+ (void)playFrequency:(CGFloat)frequency filterFrequency:(CGFloat)filterFrequency wave:(NOIWaveType)wave;
++ (void)playFrequency:(CGFloat)frequency filterFrequency:(CGFloat)filterFrequency wave:(NOIWaveType)wave gain:(CGFloat)gain resonance:(CGFloat)resonance;
 + (void)stopPlaying;
 
 @end

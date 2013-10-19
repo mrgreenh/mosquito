@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NOITouchView.h"
 
-@interface NOIViewController : UIViewController
+@interface NOIViewController : UIViewController<NOITouchViewDelegate>
 
 @end

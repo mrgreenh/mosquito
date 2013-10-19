@@ -12,6 +12,8 @@
 @protocol NOITouchViewDelegate <NSObject>
 
 - (NOIWaveType)waveType;
+- (CGFloat)gain;
+- (CGFloat)resonance;
 
 @end
 

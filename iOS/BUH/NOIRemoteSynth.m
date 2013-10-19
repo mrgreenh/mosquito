@@ -15,11 +15,13 @@
 
 @implementation NOIRemoteSynth
 
-+ (void)playFrequency:(CGFloat)frequency filterFrequency:(CGFloat)filterFrequency wave:(NOIWaveType)wave
++ (void)playFrequency:(CGFloat)frequency filterFrequency:(CGFloat)filterFrequency wave:(NOIWaveType)wave gain:(CGFloat)gain resonance:(CGFloat)resonance
 {
-    NSDictionary *parameters = @{@"note"    : @(frequency),
+    NSDictionary *parameters = @{@"pitch"    : @(frequency),
                                  @"filter"  : @(filterFrequency),
                                  @"wave"    : @(wave),
+                                 @"gain"    : @(gain),
+                                 @"q"       : @(resonance),
                                  kUserParam : [[NSUserDefaults standardUserDefaults] objectForKey:kUserParam]};
     
     [[NOINetworkingManager sharedInstance] playWithParams:parameters];
@@ -27,9 +29,10 @@
 
 + (void)stopPlaying
 {
-    NSDictionary *parameters = @{@"note"    : @(-1),
+    NSDictionary *parameters = @{@"pitch"    : @(-1),
                                  @"filter"  : @(-1),
                                  @"wave"    : @(0),
+                                 @"gain"    : @(0),
                                  kUserParam : [[NSUserDefaults standardUserDefaults] objectForKey:kUserParam]};
     
     [[NOINetworkingManager sharedInstance] playWithParams:parameters];
