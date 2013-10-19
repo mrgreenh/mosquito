@@ -7,8 +7,13 @@
 //
 
 #import "NOIViewController.h"
+#import "NOITouchView.h"
+#import "TheAmazingAudioEngine.h"
 
 @interface NOIViewController ()
+
+@property (weak, nonatomic) IBOutlet NOITouchView *touchView;
+@property (nonatomic, strong) AEAudioUnitChannel *sampler;
 
 @end
 
@@ -24,6 +29,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end
