@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/sf-01.css">
+        <script src="../../thirdparty/modernizr.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script>       
+  //assign audio conext
+  window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+  var oscillator = context.createOscillator();
+  oscillator.connect(context.destination);
+  // Play a sine type curve at A4 frequency (440hz).
+  oscillator.frequency.value = 880;
+  // Note: this constant will be replaced with "sine".
+  oscillator.type = oscillator.SINE;
+  oscillator.start(0);
+        </script>
+
+        <title>BedBugs</title>
+    </head>
+    <body>
+    <div class="container">
+    </div>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade yourf browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+</body>
+</html>
+
+
