@@ -11,55 +11,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, maximum-scale=1.0">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        
-        <link rel="stylesheet" href="../styles/main.css">
-        <link rel="stylesheet" href="../styles/sf-01.css">
-        <script src="../../thirdparty/modernizr.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script>
-        	var crazyLoop = undefined;
-        
-            window.AudioContext = window.AudioContext||window.webkitAudioContext;
-			context = new AudioContext();
-			var oscillator = context.createOscillator();
-			oscillator.connect(context.destination);
-        	
-        	var playNote = function(pitch){
-        	  oscillator.stop(0);
-			  // Play a sine type curve at A4 frequency (440hz).
-			  oscillator.frequency.value = pitch;
-			  // Note: this constant will be replaced with "sine".
-			  oscillator.type = oscillator.SINE;
-			  oscillator.start(0);
-			  document.write(pitch);
-        	};
-        
-        	var getNote = function(){
-        		$.get('http://localhost:5000/note/',function(data){
-        			console.log(data);
-        			playNote(data["pitch"]);
-        		});
-        	};
+        <script src="/static/instrument.js"></script>
 
-        	
-        	$(function(){
-        		crazyLoop = self.setInterval(function(){
-        				getNote();        				
-        			},100);
-        		
-        		$("#stop").click(function(){
-        			window.clearInterval(crazyLoop);
-        		});
-        	});  
-        </script>
-
-        <title>BedBugs</title>
+        <title>Mosquito</title>
     </head>
     <body>
     <div class="container">
-    	{{ pitch }}
     	<a href="#" id="stop">Stop</a>
     </div>
 
