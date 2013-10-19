@@ -8,6 +8,7 @@
 
 #import "NOITouchView.h"
 #import "NOINetworkingManager.h"
+#import "NOIRemoteSynth.h"
 
 #define MIN_FREQ 440
 #define MAX_FREQ 2000
@@ -64,22 +65,21 @@
 {
     self.fingerSquare.hidden = YES;
     
-    [[NOINetworkingManager sharedInstance] playPitch:@(-1) filterCutoff:@(-1)];
+    [NOIRemoteSynth stopPlaying];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.fingerSquare.hidden = YES;
-    
-    [[NOINetworkingManager sharedInstance] playPitch:@(-1) filterCutoff:@(-1)];
+    [NOIRemoteSynth stopPlaying];
 }
 
 - (void)playAtPoint:(CGPoint)point
 {
-    int pitch = MIN_FREQ + (MAX_FREQ - MIN_FREQ) * point.x / CGRectGetWidth(self.frame);
-    int filter = MIN_FILT + (MAX_FILT - MIN_FILT) * point.y / CGRectGetHeight(self.frame);
+    CGFloat pitch = MIN_FREQ + (MAX_FREQ - MIN_FREQ) * point.x / CGRectGetWidth(self.frame);
+    CGFloat filter = MIN_FILT + (MAX_FILT - MIN_FILT) * point.y / CGRectGetHeight(self.frame);
     
-    [[NOINetworkingManager sharedInstance] playPitch:@(pitch) filterCutoff:@(filter)];
+    [NOIRemoteSynth playFrequency:pitch filterFrequency:filter wave:[self.delegate waveType]];
 }
 
 @end

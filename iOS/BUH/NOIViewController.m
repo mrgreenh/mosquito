@@ -12,6 +12,7 @@
 @interface NOIViewController ()
 
 @property (weak, nonatomic) IBOutlet NOITouchView *touchView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -33,6 +34,13 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+#pragma NOITouchViewDelegate
+
+- (NOIWaveType)waveType
+{
+    return [self.segmentedControl selectedSegmentIndex];
 }
 
 @end

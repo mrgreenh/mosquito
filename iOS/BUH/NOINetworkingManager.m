@@ -36,18 +36,14 @@
     return  self;
 }
 
-- (void)playPitch:(NSNumber *)pitch filterCutoff:(NSNumber *)filterCutoff
+- (void)playWithParams:(NSDictionary *)params
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSDictionary *parameters = @{@"note"    : pitch,
-                                 @"filter"  : filterCutoff,
-                                 kUserParam : [[NSUserDefaults standardUserDefaults] objectForKey:kUserParam]};
-    
     [manager POST:@"http://10.22.12.76:5000/play/"
-       parameters:parameters
+       parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               NSLog(@"RESPONSE: %@", [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding]);
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
