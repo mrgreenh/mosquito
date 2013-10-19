@@ -12,7 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _audioController = [[AEAudioController alloc]initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]];
+//    _audioController = [[AEAudioController alloc]initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]];
     
     return YES;
 }

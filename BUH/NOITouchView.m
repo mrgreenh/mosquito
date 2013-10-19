@@ -10,7 +10,7 @@
 #import "NOINetworkingManager.h"
 
 #define MIN_FREQ 440
-#define MAX_FREQ 10000
+#define MAX_FREQ 2000
 
 @interface NOITouchView ()
 
@@ -65,13 +65,15 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.fingerCircle.hidden = YES;
+    
+    [[NOINetworkingManager sharedInstance] playTone:@(-1)];
 }
 
 - (void)playAtPoint:(CGPoint)point
 {
     int pitch = MIN_FREQ + (MAX_FREQ - MIN_FREQ) * point.x / CGRectGetWidth(self.frame);
     
-    [NOINetworkingManager playTone:@(pitch)];
+    [[NOINetworkingManager sharedInstance] playTone:@(pitch)];
 }
 
 @end

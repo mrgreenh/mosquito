@@ -10,6 +10,7 @@
 
 @interface NOINetworkingManager : NSObject
 
-+ (void)playTone:(NSNumber *)pitch;
++ (NOINetworkingManager *)sharedInstance;
+- (void)playTone:(NSNumber *)pitch;
 
 @end
