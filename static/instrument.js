@@ -31,13 +31,14 @@ var instrument = function(context, data){
 	this.oscillator = context.createOscillator();
 	this.filterNode = context.createBiquadFilter();
 	//OSC -> FILTER
-	this.oscillator.connect(this.filterNode);
+	this.gainNode                   = context.createGainNode();
+	this.oscillator.connect(this.gainNode);
 	this.filterNode.type            = this.filterNode.LOWPASS; // filter.type = 'lowpass';
 	this.filterNode.frequency.value = 1000;
 	this.filterNode.Q.value         = 3;
-	this.gainNode                   = context.createGainNode();
+
 	//FILTER -> GAIN
-	this.filterNode.connect(this.gainNode);
+	//this.filterNode.connect(this.gainNode);
     this.gainNode.gain.value = 5;
 	this.gainNode.connect(context.destination);
 	this.name                = data["user"];
@@ -72,7 +73,7 @@ $(function(){
 	crazyLoop = self.setInterval(function(){
 			getInstruments();
 			playInstruments();				
-		},100);
+		},10);
 	
 	$("#stop").click(function(){
 		window.clearInterval(crazyLoop);
