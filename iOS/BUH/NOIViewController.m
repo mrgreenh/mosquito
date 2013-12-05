@@ -7,13 +7,13 @@
 //
 
 #import "NOIViewController.h"
-#import "NOITouchView.h"
-#import "TheAmazingAudioEngine.h"
 
 @interface NOIViewController ()
 
 @property (weak, nonatomic) IBOutlet NOITouchView *touchView;
-@property (nonatomic, strong) AEAudioUnitChannel *sampler;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UISlider *resSlider;
 
 @end
 
@@ -22,7 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    self.touchView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,6 +36,28 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+#pragma NOITouchViewDelegate
+
+- (NOIWaveType)waveType
+{
+    return [self.segmentedControl selectedSegmentIndex];
+}
+
+- (IBAction)sliderChanged:(id)sender
+{
+    
+}
+
+- (CGFloat)gain
+{
+    return self.slider.value;
+}
+
+- (CGFloat)resonance
+{
+    return self.resSlider.value;
 }
 
 @end

@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NOIRemoteSynth.h"
+
+@protocol NOITouchViewDelegate <NSObject>
+
+- (NOIWaveType)waveType;
+- (CGFloat)gain;
+- (CGFloat)resonance;
+
+@end
 
 @interface NOITouchView : UIView
+
+@property (nonatomic, assign) id<NOITouchViewDelegate> delegate;
 
 @end
